@@ -1,9 +1,6 @@
 'use client'; // Add this directive at the very top
 
 import React from 'react';
-
-// Define an interface for the Webinar object
-// This tells TypeScript the expected structure of each webinar item.
 interface Webinar {
   id: number;
   title: string;
@@ -11,10 +8,9 @@ interface Webinar {
   date: string;
 }
 
-// Main App component (simulating a Next.js page)
+
 function App() {
-  // 1. Mock Data: Create a mock data array directly in the page file.
-  // We explicitly tell TypeScript that 'webinars' is an array of 'Webinar' objects.
+  
   const webinars: Webinar[] = [
     {
       id: 1,
@@ -48,21 +44,17 @@ function App() {
     },
   ];
 
-  // Helper component to display a single webinar card.
-  // This helps in reusability and cleaner code, addressing one of the README points.
-
-  // Define an interface for the props that WebinarCard expects.
-  // This tells TypeScript that 'webinar' prop should be of type 'Webinar'.
+  
   interface WebinarCardProps {
     webinar: Webinar;
   }
 
-  // The WebinarCard component now explicitly types its 'webinar' prop.
+  
   const WebinarCard = ({ webinar }: WebinarCardProps) => {
     // 3. Add Interactivity: Function to handle "View Details" button click.
     const handleViewDetails = () => {
       console.log(`Viewing details for webinar ID: ${webinar.id}`);
-      // In a real application, you might navigate to a details page or show a modal here.
+    
     };
 
     return (
@@ -88,11 +80,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white p-8 font-inter"> {/* Changed background to white */}
+    <div className="min-h-screen bg-white p-8 font-inter">
       {/* Page Title */}
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-extrabold text-gray-900 mb-2">Upcoming Webinars</h1>
-        <p className="text-lg text-gray-700">Simple and clear list of what's available for busy parents.</p>
+        {/* Corrected unescaped apostrophe here */}
+        <p className="text-lg text-gray-700">Simple and clear list of what&apos;s available for busy parents.</p>
       </header>
 
       {/* 2. Fetch & Display Data: Render mock data as a list of styled cards. */}
@@ -104,9 +97,8 @@ function App() {
         ))}
       </main>
 
-      {/* Tailwind CSS CDN script for styling */}
-      <script src="https://cdn.tailwindcss.com"></script>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+     
+      
     </div>
   );
 }
